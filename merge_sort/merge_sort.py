@@ -8,7 +8,7 @@ class MergeSort:
         aux = arr[:]
         self._sort(arr, aux, 0, len(arr)-1, reverse)
 
-    def compare(self, a, b, reverse):
+    def _compare(self, a, b, reverse):
         # returns true if a < b and not reverse
         self.compares_number += 1
         return a > b if reverse else a < b
@@ -24,7 +24,7 @@ class MergeSort:
             elif j > high:
                 arr[k] = aux[i]
                 i+= 1
-            elif self.compare(aux[j], aux[i], reverse):
+            elif self._compare(aux[j], aux[i], reverse):
                 arr[k] = aux[j]
                 j += 1
             else:
