@@ -1,4 +1,4 @@
-My task was:
+My task was to:
   1. Implement Merge Sort.
   2. Add ability to run script from cmd typing such command "**python merge_sort.py asc/desc arguments (seperated by comma)**".
   3. Add report after sorting.
