@@ -6,14 +6,14 @@ class MergeSort:
     def __init__(self, arr, reverse):
         self.compares_number = 0
         aux = arr[:]
-        self._sort(arr, aux, 0, len(arr)-1, reverse)
+        self.__sort(arr, aux, 0, len(arr)-1, reverse)
 
-    def _compare(self, a, b, reverse):
+    def __compare(self, a, b, reverse):
         # returns true if a < b and not reverse
         self.compares_number += 1
         return a > b if reverse else a < b
 
-    def _merge(self, arr, aux, low, high, reverse):
+    def __merge(self, arr, aux, low, high, reverse):
         mid = low + (high - low) // 2
         i, j = low, mid + 1
 
@@ -23,22 +23,22 @@ class MergeSort:
                 j += 1
             elif j > high:
                 arr[k] = aux[i]
-                i+= 1
-            elif self._compare(aux[j], aux[i], reverse):
+                i += 1
+            elif self.__compare(aux[j], aux[i], reverse):
                 arr[k] = aux[j]
                 j += 1
             else:
                 arr[k] = aux[i]
                 i += 1
 
-    def _sort(self, arr, aux, low, high, reverse):
+    def __sort(self, arr, aux, low, high, reverse):
         if  high - low < 1:
             return
 
         mid = low + (high - low) // 2
-        self._sort(aux, arr, low, mid, reverse)
-        self._sort(aux, arr, mid+1, high, reverse)
-        self._merge(arr, aux, low, high, reverse) 
+        self.__sort(aux, arr, low, mid, reverse)
+        self.__sort(aux, arr, mid+1, high, reverse)
+        self.__merge(arr, aux, low, high, reverse) 
 
     @staticmethod
     def sort(arr, reverse=False, show_info=False):
