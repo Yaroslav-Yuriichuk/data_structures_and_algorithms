@@ -1,4 +1,5 @@
 My task was to implement dynamic data structure called **Binary Search Tree**
+
 My implementation in python provides such interface:
     1. __init__(self, key=lambda x: x) - constructor with possibility to provide custom way of sorting elements
     2. insert(self, data) - add element
