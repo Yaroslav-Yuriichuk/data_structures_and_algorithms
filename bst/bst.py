@@ -249,10 +249,10 @@ class BST:
 
         def get_string_for_node(node, line_length):
             data_length = len(str(node.data))
-            return ' ' * ((line_length - data_length - len(str(node.count)) - 1) // 2) \
-                + str(node.count) + 'x ' \
+            return ' ' * ((line_length - data_length - len(str(node.count))) // 2) \
+                + str(node.count) + 'x' \
                 + str(node.data) \
-                + ' ' * ((line_length - data_length - len(str(node.count)) - 2) // 2)
+                + ' ' * ((line_length - data_length - len(str(node.count)) - 1) // 2)
 
         def get_string_for_arrow(line_length, left=True):
             arrow = '/' if left else '\\'
@@ -298,7 +298,7 @@ class BST:
         height = max_depth(self.__root)
         max_count_length = len(str(max_count(self.__root)))
 
-        line_length = (max_length + max_count_length + 4) * (2 ** height)
+        line_length = (max_length + max_count_length + 3) * (2 ** height)
 
         print(get_string_for_level(self.__root, 0, 0, line_length))
         
