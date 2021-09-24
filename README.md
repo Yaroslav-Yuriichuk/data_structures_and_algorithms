@@ -2,20 +2,21 @@
 
 **My implementation in python provides such interface:**  
     1. \_\_init__(self, key=lambda x: x) - constructor with possibility to provide custom way of sorting elements.  
-    2. insert(self, data) - add element.  
-    3. delete(self, key, delete_all=True) - delete single element or all if they are in BST.  
-    4. min(self) - find smallest element.  
-    5. max(self) - find greatest element.  
-    6. delete_min(self, delete_all=True) - delete single or all smallest elements.  
-    7. delete_max(self, delete_all=True) - delete single or all geratest elements.  
-    8. clear(self) - delete all elements from BST.  
-    9. size(self) - get number of elements in BST.  
-    10. operator in - check if element is in BST.  
-    11. count(self, key) - get number of occurrences of element in BST.  
-    12. items(self) - get list of elements in BST.  
-    13. rank(self, key) - get number of elements smaller than the key.  
-    14. floor(self, key) - find greatest element not greater than the key.  
-    15. ceiling(self, key) - find smallest element not smaller then the key.  
+    2. \_\_str__(self) - print BST (elements in ascending order)
+    3. insert(self, data) - add element.  
+    4. delete(self, key, delete_all=True) - delete single element or all if they are in BST.  
+    5. min(self) - find smallest element.  
+    6. max(self) - find greatest element.  
+    7. delete_min(self, delete_all=True) - delete single or all smallest elements.  
+    8. delete_max(self, delete_all=True) - delete single or all geratest elements.  
+    9. clear(self) - delete all elements from BST.  
+    10. size(self) - get number of elements in BST.  
+    11. operator in - check if element is in BST.  
+    12. count(self, key) - get number of occurrences of element in BST.  
+    13. items(self) - get list of elements in BST.  
+    14. rank(self, key) - get number of elements smaller than the key.  
+    15. floor(self, key) - find greatest element not greater than the key.  
+    16. ceiling(self, key) - find smallest element not smaller then the key.  
     
 **To run:**  
     1. Make sure You have python installed.  
