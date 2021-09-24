@@ -2,7 +2,7 @@
 
 **My implementation in python provides such interface:**  
     1. \_\_init__(self, key=lambda x: x) - constructor with possibility to provide custom way of sorting elements.  
-    2. \_\_str__(self) - print BST (elements in ascending order)
+    2. \_\_str__(self) - print BST (elements in ascending order)  
     3. insert(self, data) - add element.  
     4. delete(self, key, delete_all=True) - delete single element or all if they are in BST.  
     5. min(self) - find smallest element.  
