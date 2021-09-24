@@ -223,3 +223,87 @@ class BST:
         items = []
         self.__inorder(self.__root, items)
         return items
+
+    def print_in_ascii(self):
+        def max_element_str_length(node):
+            if node is None:
+                return 0
+
+            return max(max_element_str_length(node.left), \
+                max_element_str_length(node.right), \
+            len(str(node.data)))
+
+        def max_count(node):
+            if node is None:
+                return 0
+
+            return max(max_count(node.left), \
+                max_count(node.right), \
+                node.count)    
+
+        def max_depth(node):
+            if node is None:
+                return -1
+
+            return max(max_depth(node.left), max_depth(node.right)) + 1
+
+        def get_string_for_node(node, line_length):
+            data_length = len(str(node.data))
+            return ' ' * ((line_length - data_length - len(str(node.count)) - 1) // 2) \
+                + str(node.count) + 'x ' \
+                + str(node.data) \
+                + ' ' * ((line_length - data_length - len(str(node.count)) - 2) // 2)
+
+        def get_string_for_arrow(line_length, left=True):
+            arrow = '/' if left else '\\'
+            return ' ' * (line_length // 2) + arrow + ' ' * ((line_length - 1) // 2)
+
+        def get_string_for_level(node, current_level, level, line_length):
+            if current_level == level:
+                if node is None:
+                    return ' ' * line_length   
+                return get_string_for_node(node, line_length)
+      
+            left = None if node is None else node.left
+            right = None if node is None else node.right
+            return get_string_for_level(left, current_level + 1, level, line_length) \
+                + get_string_for_level(right, current_level + 1, level, line_length)
+
+        def get_arrows_after_level(node, current_level, level, line_length):
+            if current_level == level:
+                if node.left is None:
+                    p1 = ' ' * (line_length // 2)
+                else:
+                    p1 = get_string_for_arrow(line_length // 2) 
+                if node.right is None:
+                    p2 = ' ' * (line_length // 2)
+                else:
+                    p2 = get_string_for_arrow(line_length // 2, left=False)
+
+                return p1 + p2
+            else:
+                if node.left is None:
+                    p1 = ' ' * (line_length // 2)
+                else:
+                    p1 = get_arrows_after_level(node.left, current_level + 1, level, line_length)
+                if node.right is None:
+                    p2 = ' ' * (line_length // 2)
+                else:
+                    p2 = get_arrows_after_level(node.right, current_level + 1, level, line_length)
+
+                return p1 + p2
+
+
+        max_length = max_element_str_length(self.__root)
+        height = max_depth(self.__root)
+        max_count_length = len(str(max_count(self.__root)))
+
+        line_length = (max_length + max_count_length + 4) * (2 ** height)
+
+        print(get_string_for_level(self.__root, 0, 0, line_length))
+        
+        for level in range(1, height + 1):
+            print(get_arrows_after_level(self.__root, 0, level - 1, line_length))
+            line_length //= 2
+            print(get_string_for_level(self.__root, 0, level, line_length))
+            
