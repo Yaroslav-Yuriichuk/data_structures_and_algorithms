@@ -16,7 +16,7 @@
     13. items(self) - get list of elements in BST.  
     14. rank(self, key) - get number of elements smaller than the key.  
     15. floor(self, key) - find greatest element not greater than the key.  
-    16. ceiling(self, key) - find smallest element not smaller then the key.
+    16. ceiling(self, key) - find smallest element not smaller then the key.  
     17. print_in_ascii(self) - draw tree in ascii praphics  
     
 **To run:**  
