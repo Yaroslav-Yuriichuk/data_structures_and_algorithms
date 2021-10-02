@@ -5,14 +5,14 @@ def solve(piles, h):
     while high >= low:
         k = low + (high - low) // 2
         
-        required_k = 0
+        required_h = 0
         for x in piles:
-            required_k += (x - 1) // k + 1
+            required_h += (x - 1) // k + 1
             
-        if required_k <= h:
+        if required_h <= h:
             min_speed = k
             high = k - 1
-        elif required_k > h:
+        elif required_h > h:
             low = k + 1
     
     return min_speed
