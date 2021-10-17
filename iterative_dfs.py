@@ -19,5 +19,3 @@ def iterative_dfs(graph, source):
                 break
 
     return visited, previous
-
-    
