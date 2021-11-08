@@ -1,31 +1,43 @@
 from functools import lru_cache
 import math
 
+
 def solve(x, n):
     if n == 1:
         return len(x) if x.count('0') == 0 else -1
 
+    int_x = 0
     powers = set()
+    length_in_binary = {}
+
+    for i in range(len(x)-1, -1, -1):
+        int_x += int(x[-(i+1)]) * (2 ** i)
 
     num = 1
     while num < pow(2, len(x)):
-        powers.add(bin(num)[2:])
+        powers.add(num)
+        length_in_binary[num] = len(bin(num)) - 2
         num *= n
 
     @lru_cache(maxsize=None)
-    def solve_rec(x):
-        if x in powers:
-            return 1
-        elif x == '0':
-            return math.inf    
+    def solve_recursive(number, reverse_start_pos):
+        if number == 0:
+            return 0
 
         result = math.inf
-        for i in range(1, len(x)):
-            result = min(result, solve_rec(x[:i]) + solve_rec(x[i:]))
 
-        return result
+        if not x[-(reverse_start_pos+1)] == '0':
+            for power in powers:
+                if power == number:
+                    return 1
+                elif reverse_start_pos + 1 > length_in_binary[power]:
+                    shifted_power = power << (reverse_start_pos - length_in_binary[power] + 1)
+                    if shifted_power & number == shifted_power:
+                        result = min(result, solve_recursive(number - shifted_power, reverse_start_pos - length_in_binary[power]))
 
-    result = solve_rec(x)
+        return result + 1
+
+    result = solve_recursive(int_x, len(x) - 1)
     return -1 if result == math.inf else result
 
 
