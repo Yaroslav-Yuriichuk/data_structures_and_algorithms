@@ -6,13 +6,11 @@ def solve(x, n):
     if n == 1:
         return len(x) if x.count('0') == 0 else -1
 
-    int_x = 0
+    int_x = int(x, 2)
     powers = set()
     length_in_binary = {}
 
-    for i in range(len(x)-1, -1, -1):
-        int_x += int(x[-(i+1)]) * (2 ** i)
-
+    
     num = 1
     while num < pow(2, len(x)):
         powers.add(num)
@@ -28,9 +26,7 @@ def solve(x, n):
 
         if not x[-(reverse_start_pos+1)] == '0':
             for power in powers:
-                if power == number:
-                    return 1
-                elif reverse_start_pos + 1 > length_in_binary[power]:
+                if reverse_start_pos + 1 >= length_in_binary[power]:
                     shifted_power = power << (reverse_start_pos - length_in_binary[power] + 1)
                     if shifted_power & number == shifted_power:
                         result = min(result, solve_recursive(number - shifted_power, reverse_start_pos - length_in_binary[power]))
