@@ -1,6 +1,7 @@
 def find(text, pattern):
 
     def build_dfa(text, pattern):
+        # dfa - deterministic finite state automaton
         dfa = [{}] * len(pattern)
         characters = set(text + pattern)
         dfa[0] = {character: 0 for character in characters}
